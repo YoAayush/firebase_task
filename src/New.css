@@ -1,0 +1,128 @@
+.field{
+    width: fit-content;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 9em auto;
+    /* background-color: brown; */
+}
+
+.field h3{
+    font-size: 20px;
+    font-weight: 800;
+    color: antiquewhite;
+}
+
+input[type = "text"], input[type = "email"], input[type = "date"], input[type = "number"]{
+    height: 2rem;
+    width: 30rem;
+    margin: auto auto;
+    margin-left: 50px;
+    font-size: 20px;
+    background-color: #d6caca;
+}
+
+
+input[type = "file"]{
+    font-size: 20px;
+    margin: auto;
+    margin-left: 50px;
+}
+
+.sub-del-btn{
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.submit, .delete{
+    margin: auto 50px;
+    font-size: 18px;
+}
+
+.details{
+    display: flex;
+}
+
+.personal-details{
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.person-image{
+    margin: auto;
+}
+
+.person-image input[type = "file"]{
+    display: none;
+}
+
+.image-upload{
+    margin: 20px auto;
+    text-align: center;
+}
+
+.person-image label{
+    height: 100px;
+    width: 25rem;
+    border-radius: 6px;
+    border: 1px dashed rgb(253, 249, 249);
+    font-size: 25px;
+    font-weight: 400;
+    color: antiquewhite;
+    padding: .5rem;
+    box-shadow: 0px 4px 18px rgb(245, 241, 241);
+}
+
+label:hover{
+    cursor: pointer;
+}
+
+#profile-img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #d6caca;
+    transition: 0.5s all ease-in-out;
+}
+
+#profile-img:hover{
+    scale: 1.1;
+}
+
+.field-qualification{
+    display: block;
+}
+
+.flex-field{
+    display: flex;
+}
+
+.flex-field h3{
+    font-size: 20px;
+    font-weight: 800;
+    color: antiquewhite;
+}
+
+.field-qualification .plus-btn{
+    margin: auto;
+    margin-left: 35px;
+    font-size: 15px;
+}
+
+#add-qual{
+    margin: auto;
+    margin-left: 142px;
+}
+
+#qualification{
+    display: flex;
+}
+
+#qualification img{
+    width: 50px;
+}
+
+#qualification img:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,65 @@
+table {
+    border: 1px solid grey;
+    width: 100%;
+    table-layout: auto;
+}
+
+th {
+    border: 1px solid grey;
+    font-size: 25px;
+    font-weight: 900;
+    color: antiquewhite;
+}
+
+td {
+    border: 1px solid grey;
+    text-align: center;
+    width: 200px;
+    color: antiquewhite;
+}
+
+h2 {
+    text-align: center;
+    margin: auto;
+}
+
+.records-box {
+    width: 100%;
+    /* background-color: aquamarine; */
+}
+
+.records-box span {
+    text-align: center;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.image-btn-inside {
+    width: 100%;
+    margin: auto;
+}
+
+.resume-btn-inside button {
+    padding: 0.4em 1em;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.btns button {
+    padding: 0.4em .8em;
+    font-size: 18px;
+    font-weight: 400;
+    margin: auto 15px;
+}
+
+.profile_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: auto;
+    /* margin-left: 30px; */
+}
+
+span {
+    width: 100%;
+}
