@@ -42,14 +42,14 @@ h2 {
 .resume-btn-inside button {
     padding: 0.4em 1em;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 200;
 }
 
 .btns button {
     padding: 0.4em .8em;
     font-size: 18px;
-    font-weight: 400;
-    margin: auto 15px;
+    font-weight: 200;
+    margin: auto 5px;
 }
 
 .profile_img {
