@@ -172,6 +172,11 @@ export default function New() {
     //final submiting or updaing the data.
     const submitData = async () => {
         try {
+            if (!imageUpload || !uploadresume){
+                alert("please add your resume pdf and profile image :)");
+                return;
+            }
+
             let ImgDownloadUrl, ResumeDownloadUrl;
             // console.log(imageUpload + "\n" + uploadresume);
             let result = await LoadLink();
