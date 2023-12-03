@@ -172,8 +172,8 @@ export default function New() {
     //final submiting or updaing the data.
     const submitData = async () => {
         try {
-            if (!imageUpload || !uploadresume){
-                alert("please add your resume pdf and profile image :)");
+            if (!imageUpload || !uploadresume || QualList == ""){
+                alert("please fill all the fields :)");
                 return;
             }
 
