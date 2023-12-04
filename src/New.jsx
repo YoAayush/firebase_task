@@ -172,7 +172,7 @@ export default function New() {
     //final submiting or updaing the data.
     const submitData = async () => {
         try {
-            if (!imageUpload || !uploadresume || QualList == ""){
+            if (!users.image || !users.resume || QualList == ""){
                 alert("please fill all the fields :)");
                 return;
             }
