@@ -128,11 +128,11 @@ export default function New() {
     const LoadLink = async () => {
         try {
             // let randomID = crypto.randomUUID();
-            let randomID = users.userid != "" ? users.userid : crypto.randomUUID();  //use users.userid in place of randomID
+            let ID = users.userid;  //use users.userid in place of randomID
             let ImgDownloadUrl, ResumeDownloadUrl;
 
             if (imageUpload) {
-                const imageRef = ref(storage, `images/${randomID}`);
+                const imageRef = ref(storage, `images/${ID}`);
                 await uploadBytes(imageRef, imageUpload);
                 ImgDownloadUrl = await getDownloadURL(imageRef);
                 console.log("Image URL: " + ImgDownloadUrl);
@@ -141,7 +141,7 @@ export default function New() {
             }
 
             if (uploadresume) {
-                const ResumeRef = ref(storage, `resume/${randomID}`);
+                const ResumeRef = ref(storage, `resume/${ID}`);
                 await uploadBytes(ResumeRef, uploadresume);
                 ResumeDownloadUrl = await getDownloadURL(ResumeRef);
                 console.log("Resume URL: " + ResumeDownloadUrl);
@@ -156,20 +156,18 @@ export default function New() {
             };
         } catch (error) {
             console.log(error);
-            throw error;
         }
     }
 
     //final submiting or updaing the data.
     const submitData = async () => {
         try {
-            if (!editMode && (!users.name || !users.contact || !users.address || !users.dob || !users.email ||!users.image || !users.resume || QualList.length == 0)){
-                alert("please fill all the fields :)");
+            if (!editMode && (!users.name || !users.address || !users.contact || !users.email || !users.dob || QualList.length === 0)) {
+                alert("Please fill all the required fields :)");
                 return;
             }
 
             let ImgDownloadUrl, ResumeDownloadUrl;
-            // console.log(imageUpload + "\n" + uploadresume);
             let result = await LoadLink();
             ImgDownloadUrl = result.ImgDownloadUrl;
             ResumeDownloadUrl = result.ResumeDownloadUrl;
@@ -221,7 +219,7 @@ export default function New() {
 
     return (
         <div className="new-record">
-            <div className="details">
+            <div className="details">   
                 <div className="personal-details">
                     <div className="field">
                         <h3>Name:-</h3>

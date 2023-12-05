@@ -34,7 +34,7 @@ export default function View() {
             await deleteObject(fileref);
             await deleteObject(imageRef);
             await deleteDoc(docRef);
-            console.log("user details deleted from firestore whose id is " + docID)
+            alert("user details deleted from firestore.")
         } catch (error) {
             console.log("error is: ", error)
         }
