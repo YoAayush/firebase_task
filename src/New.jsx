@@ -187,13 +187,17 @@ export default function New() {
             const hasChanges = JSON.stringify(users) !== JSON.stringify(userToUpdate);
             
             if (editMode && hasChanges) {
+                // in edit mode this condition runs
                 setusers(userToUpdate);
                 const docRef = doc(dataCollection, param.id);
                 await setDoc(docRef, userToUpdate);
+                alert("Data updated and added to firestore :)");
             } else if (!editMode){
+                // for making new record this condition runs
                 setusers(userToUpdate);
                 const docRef = doc(dataCollection, users.userid);
                 await setDoc(docRef, userToUpdate);
+                alert("Data added to firestore :)");
             } else {
                 alert("no changes has been made.");
             }
@@ -210,7 +214,6 @@ export default function New() {
                 qualification: []
             });
 
-            console.log("Data added/updated in Firestore!");
         } catch (error) {
             console.error("Error adding/updating data to Firestore: ", error);
         }
