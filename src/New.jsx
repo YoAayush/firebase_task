@@ -131,15 +131,6 @@ export default function New() {
             let randomID = users.userid != "" ? users.userid : crypto.randomUUID();  //use users.userid in place of randomID
             let ImgDownloadUrl, ResumeDownloadUrl;
 
-            // const imageRef = ref(storage, `images/${randomID}`);
-            // const ResumeRef = ref(storage, `resume/${randomID}`);
-            // await uploadBytes(imageRef, imageUpload);
-            // await uploadBytes(ResumeRef, uploadresume);
-            // ImgDownloadUrl = await getDownloadURL(imageRef);
-            // ResumeDownloadUrl = await getDownloadURL(ResumeRef);
-            // console.log("image url : " + ImgDownloadUrl);
-            // console.log("resume url : " + ResumeDownloadUrl);
-
             if (imageUpload) {
                 const imageRef = ref(storage, `images/${randomID}`);
                 await uploadBytes(imageRef, imageUpload);
@@ -172,10 +163,10 @@ export default function New() {
     //final submiting or updaing the data.
     const submitData = async () => {
         try {
-            // if (!users.image || !users.resume || QualList == ""){
-            //     alert("please fill all the fields :)");
-            //     return;
-            // }
+            if (!editMode && (!users.name || !users.contact || !users.address || !users.dob || !users.email ||!users.image || !users.resume || QualList.length == 0)){
+                alert("please fill all the fields :)");
+                return;
+            }
 
             let ImgDownloadUrl, ResumeDownloadUrl;
             // console.log(imageUpload + "\n" + uploadresume);
@@ -183,18 +174,6 @@ export default function New() {
             ImgDownloadUrl = result.ImgDownloadUrl;
             ResumeDownloadUrl = result.ResumeDownloadUrl;
             // randomID = result.randomID;
-            
-            // if (editMode) {
-            //     let result = await LoadLink(Document.userid, Document.image, Document.resume);
-            //     ImgDownloadUrl = result.ImgDownloadUrl;
-            //     ResumeDownloadUrl = result.ResumeDownloadUrl;
-            //     randomID = result.randomID;
-            // } else {
-            //     let result = await LoadLink();
-            //     ImgDownloadUrl = result.ImgDownloadUrl;
-            //     ResumeDownloadUrl = result.ResumeDownloadUrl;
-            //     randomID = result.randomID;
-            // }
 
             const userToUpdate = {
                 ...users,
@@ -204,14 +183,19 @@ export default function New() {
                 qualification: QualList
             };
 
-            if (editMode) {
+            // Check if there are changes in edit mode
+            const hasChanges = JSON.stringify(users) !== JSON.stringify(userToUpdate);
+            
+            if (editMode && hasChanges) {
                 setusers(userToUpdate);
                 const docRef = doc(dataCollection, param.id);
                 await setDoc(docRef, userToUpdate);
-            } else {
+            } else if (!editMode){
                 setusers(userToUpdate);
                 const docRef = doc(dataCollection, users.userid);
                 await setDoc(docRef, userToUpdate);
+            } else {
+                alert("no changes has been made.");
             }
 
             // Clear form data after submission
@@ -221,8 +205,8 @@ export default function New() {
                 contact: "",
                 email: "",
                 dob: "",
-                resume: "",
-                image: "",
+                resume: null,
+                image: null,
                 qualification: []
             });
 
