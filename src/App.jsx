@@ -9,10 +9,6 @@ function App() {
       <Routes>
         {/* Add a default route for the root */}
         <Route path='/' element={<Home />} />
-        {/* <Route
-          path='/Home'
-          element={<Home />}
-        ></Route> */}
         <Route
           path='/New'
           element={<New />}
