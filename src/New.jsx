@@ -79,7 +79,7 @@ export default function New() {
         const list1 = [...QualList]
         list1[index] = e.target.value.trim()
         setQualList(list1)
-        console.log(QualList)
+        // console.log(QualList)
     }
 
     //handling the chaning event of input text fields.
@@ -259,7 +259,7 @@ export default function New() {
                             {QualList.map((Qualification, index) => {
                                 return (
                                     <div id="qualification" key={index}>
-                                        <input type="text" name="qualification" value={Qualification} id={`${index}`} onChange={(e) => { handleQual(e, index) }} />
+                                        <input type="text" name="qualification" value={Qualification} placeholder="enter the qualification" id={`${index}`} onChange={(e) => { handleQual(e, index) }} />
                                         {QualList.length >= 0 && <img src="https://img.icons8.com/?size=512&id=7Tnx21L5k1yA&format=png" alt="cross_icon" id="delete-qual" onClick={() => RemoveField(Qualification, index)} />}
                                     </div>
                                 )
