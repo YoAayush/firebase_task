@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './New.css';
-import { setDoc, doc, query, getDocs, where, getDoc, documentId } from "firebase/firestore";
+import { setDoc, doc, query, getDocs, where } from "firebase/firestore";
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { dataCollection, app } from "./firebase.jsx"
 import { useParams } from "react-router";
