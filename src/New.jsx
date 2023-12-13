@@ -4,6 +4,7 @@ import { setDoc, doc, query, getDocs, where } from "firebase/firestore";
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { dataCollection, app } from "./firebase.jsx"
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function New() {
     const param = useParams()
@@ -183,14 +184,14 @@ export default function New() {
 
             // Check if there are changes in edit mode
             const hasChanges = JSON.stringify(users) !== JSON.stringify(userToUpdate);
-            
+
             if (editMode && hasChanges) {
                 // in edit mode this condition runs
                 setusers(userToUpdate);
                 const docRef = doc(dataCollection, param.id);
                 await setDoc(docRef, userToUpdate);
                 alert("Data updated and added to firestore :)");
-            } else if (!editMode){
+            } else if (!editMode) {
                 // for making new record this condition runs
                 setusers(userToUpdate);
                 const docRef = doc(dataCollection, users.userid);
@@ -219,7 +220,7 @@ export default function New() {
 
     return (
         <div className="new-record">
-            <div className="details">   
+            <div className="details">
                 <div className="personal-details">
                     <div className="field">
                         <h3>Name:-</h3>
@@ -268,7 +269,16 @@ export default function New() {
                     </div>
                     <div className="field">
                         <h3>Resume:-</h3>
-                        <input type="file" name="resume" id="pdf" onChange={(e) => { handleResumeChange(e) }} accept="application/pdf" />
+                        <div style={{ display: "flex", flexDirection: "column", marginTop: "20px" }}>
+                            <input type="file" name="resume" id="pdf" onChange={(e) => { handleResumeChange(e) }} accept="application/pdf" />
+                            {
+                                editMode ? 
+                                    <Link to={users.resume} target="_blank">
+                                        <button className="submit" style={{ marginTop: "10px" }}>View Resume</button>
+                                    </Link>
+                                : false
+                            }
+                        </div>
                     </div>
                 </div>
                 <div className="person-image">
