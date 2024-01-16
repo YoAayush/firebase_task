@@ -191,6 +191,7 @@ export default function New() {
                 const docRef = doc(dataCollection, param.id);
                 await setDoc(docRef, userToUpdate);
                 alert("Data updated and added to firestore :)");
+                setEditMode(!editMode);
             } else if (!editMode) {
                 // for making new record this condition runs
                 setusers(userToUpdate);
